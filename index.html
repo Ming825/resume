@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>静 · 个人主页</title>
+  <meta name="description" content="个人简历主页 — 个人信息、教育经历、简介与笔记。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>静</text></svg>" />
+</head>
+<body>
+
+  <!-- ===== Nav ===== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#top" class="brand">静<span class="seal">·</span>Jìng</a>
+      <div class="nav-links">
+        <a href="#about">简介</a>
+        <a href="#education">教育</a>
+        <a href="#hobbies">爱好</a>
+        <a href="#notes">笔记</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">☾</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== Hero ===== -->
+  <header class="hero" id="top">
+    <svg class="enso" viewBox="0 0 200 200" aria-hidden="true">
+      <path d="M100 24 C 52 24, 24 58, 24 100 C 24 142, 56 176, 100 176 C 138 176, 168 150, 174 112"
+        fill="none" stroke="var(--accent)" stroke-width="9" stroke-linecap="round"
+        opacity="0.5" transform="rotate(-18 100 100)"/>
+    </svg>
+    <div class="wrap reveal">
+      <p class="hero-eyebrow">少即是多 · 大道至简</p>
+      <h1>你好，我是<br /><span class="accent">明 · Ming</span></h1>
+      <p class="hero-sub">一名追求简洁与本质的开发者 / 设计者。在代码与留白之间，寻找秩序与宁静。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#notes">阅读笔记 →</a>
+        <a class="btn btn-ghost" href="#about">了解我</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== About / Intro ===== -->
+    <section id="about" class="wrap reveal">
+      <span class="section-num">01 — 简介</span>
+      <h2>关于我</h2>
+      <div class="prose">
+        <p>我相信好的设计与好的代码一样，都在于做减法。剔除多余，让真正重要的东西自然浮现——这是我对作品、也是对生活的态度。</p>
+        <blockquote class="pull">「为学日益，为道日损。」<br />— 在不断学习的同时，亦学会舍弃。</blockquote>
+        <p>目前专注于前端工程与交互设计，热衷于把东方美学中的「留白」「节制」融入现代界面之中。工作之外，喜欢用文字记录思考，沉淀为下方的笔记。</p>
+      </div>
+    </section>
+
+    <!-- ===== Personal Info ===== -->
+    <section id="info" class="wrap reveal">
+      <span class="section-num">02 — 信息</span>
+      <h2>个人信息</h2>
+      <div class="info-grid">
+        <div class="info-cell"><div class="k">姓名</div><div class="v">明 / Ming</div></div>
+        <div class="info-cell"><div class="k">所在地</div><div class="v">中国 · 上海</div></div>
+        <div class="info-cell"><div class="k">方向</div><div class="v">前端工程 · 交互设计</div></div>
+        <div class="info-cell"><div class="k">邮箱</div><div class="v"><a href="mailto:hello@example.com">hello@example.com</a></div></div>
+        <div class="info-cell"><div class="k">GitHub</div><div class="v"><a href="https://github.com/ming825" target="_blank" rel="noopener">@ming825</a></div></div>
+        <div class="info-cell"><div class="k">语言</div><div class="v">中文 · English</div></div>
+      </div>
+    </section>
+
+    <!-- ===== Education ===== -->
+    <section id="education" class="wrap reveal">
+      <span class="section-num">03 — 教育</span>
+      <h2>教育经历</h2>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date">2020 — 2024</div>
+          <h3>计算机科学与技术 · 本科</h3>
+          <p class="tl-org">某某大学</p>
+          <p>主修数据结构、算法、人机交互与软件工程。毕业设计聚焦于可访问性与极简界面设计。</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2017 — 2020</div>
+          <h3>理科 · 高中</h3>
+          <p class="tl-org">某某中学</p>
+          <p>在此期间培养了对设计与编程的兴趣，开始自学网页与视觉设计。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Hobbies ===== -->
+    <section id="hobbies" class="wrap reveal">
+      <span class="section-num">04 — 爱好</span>
+      <h2>兴趣爱好</h2>
+      <div class="hobby-grid">
+        <div class="hobby"><div class="icon">🍵</div><h3>茶道</h3><p>于一杯茶的等待中，体会节奏与专注。</p></div>
+        <div class="hobby"><div class="icon">📖</div><h3>阅读</h3><p>哲学、设计与文学，皆是思考的养料。</p></div>
+        <div class="hobby"><div class="icon">🥾</div><h3>徒步</h3><p>在山水之间，给心灵腾出留白。</p></div>
+        <div class="hobby"><div class="icon">📷</div><h3>摄影</h3><p>用取景框练习「取舍」的艺术。</p></div>
+        <div class="hobby"><div class="icon">🎹</div><h3>音乐</h3><p>钢琴与极简电子，是另一种秩序。</p></div>
+        <div class="hobby"><div class="icon">✒️</div><h3>书法</h3><p>一笔一划间，修习专注与平静。</p></div>
+      </div>
+    </section>
+
+    <!-- ===== Notes / Blog ===== -->
+    <section id="notes" class="wrap reveal">
+      <span class="section-num">05 — 笔记</span>
+      <h2>博客与笔记</h2>
+      <div class="notes-list" id="notesList">
+        <p class="note-loading">正在载入笔记…</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer wrap reveal">
+    <div class="seal-mark">静</div>
+    <p>以简驭繁 · Less, but better</p>
+    <p>© <span id="year"></span> Ming · 由 GitHub Pages 托管，GitHub Actions 自动发布</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

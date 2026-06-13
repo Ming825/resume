@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>笔记 · 静</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>静</text></svg>" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">静<span class="seal">·</span>Jìng</a>
+      <div class="nav-links">
+        <a href="index.html#about">简介</a>
+        <a href="index.html#notes">笔记</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="切换主题">☾</button>
+      </div>
+    </div>
+  </nav>
+
+  <article class="article wrap">
+    <a class="article-back" href="index.html#notes">← 返回笔记列表</a>
+    <div class="article-meta" id="articleMeta"></div>
+    <h1 id="articleTitle">载入中…</h1>
+    <div class="article-body" id="articleBody"></div>
+  </article>
+
+  <footer class="footer wrap">
+    <div class="seal-mark">静</div>
+    <p>以简驭繁 · Less, but better</p>
+  </footer>
+
+  <!-- Markdown renderer -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.0/marked.min.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+  (function () {
+    "use strict";
+    var params = new URLSearchParams(location.search);
+    var slug = params.get("slug") || "";
+    var titleEl = document.getElementById("articleTitle");
+    var metaEl  = document.getElementById("articleMeta");
+    var bodyEl  = document.getElementById("articleBody");
+
+    // Only allow safe slug characters (avoid path traversal)
+    if (!/^[a-z0-9\-_]+$/i.test(slug)) {
+      titleEl.textContent = "笔记不存在";
+      return;
+    }
+
+    Promise.all([
+      fetch("posts/index.json", { cache: "no-cache" }).then(function (r) { return r.ok ? r.json() : []; }),
+      fetch("posts/" + slug + ".md", { cache: "no-cache" }).then(function (r) {
+        if (!r.ok) throw new Error("not found");
+        return r.text();
+      })
+    ]).then(function (res) {
+      var meta = (res[0] || []).filter(function (p) { return p.slug === slug; })[0] || {};
+      var md = res[1];
+      document.title = (meta.title || slug) + " · 静";
+      titleEl.textContent = meta.title || slug;
+      metaEl.textContent = [meta.date, meta.tag].filter(Boolean).join("  ·  ");
+      if (window.marked) {
+        bodyEl.innerHTML = marked.parse(md);
+      } else {
+        // Fallback: render as preformatted text if CDN is unavailable
+        var pre = document.createElement("pre");
+        pre.textContent = md;
+        bodyEl.appendChild(pre);
+      }
+    }).catch(function () {
+      titleEl.textContent = "笔记不存在";
+      bodyEl.innerHTML = '<p>没有找到这篇笔记。<a href="index.html#notes">返回列表</a></p>';
+    });
+  })();
+  </script>
+</body>
+</html>
